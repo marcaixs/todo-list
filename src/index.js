@@ -5,7 +5,6 @@ import { saveProjectToLocalStorage, getProjectFromLocalStorage } from "./modules
 import { printProjects, printTodos } from "./modules/ui.js";
 
 const projects = [];
-let currentProject; 
 
 function startTodoList(){
     const exampleProject = new Project('example');
@@ -13,9 +12,8 @@ function startTodoList(){
     exampleProject.setTodos(new Todo('todo example 2', 'blebleblelbe', '25/05/25', 6))
     projects.push(exampleProject)
     saveProjectToLocalStorage(projects);
-    currentProject = exampleProject;
     printProjects(projects);
-    printTodos(currentProject)
+    printTodos(exampleProject)
 }
 
 startTodoList()
@@ -28,8 +26,7 @@ newProjectButton.addEventListener('click', ()=>{
     projects.push(project);
     saveProjectToLocalStorage(projects);
     printProjects(projects);
-    currentProject = project;
-    printTodos(currentProject) 
+    printTodos(project)
 })
 
 
