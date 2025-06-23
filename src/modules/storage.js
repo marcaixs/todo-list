@@ -2,7 +2,7 @@
 
 export function saveProjectToLocalStorage(projects){
 
-    localStorage.setItem(projects, JSON.stringify(projects))
+    localStorage.setItem('projects', JSON.stringify(projects))
 }
 
 export function getProjectFromLocalStorage(){
