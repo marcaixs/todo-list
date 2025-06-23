@@ -1,13 +1,14 @@
-export function printProjects(projects){
+export function printProjects(projects, setCurrentProject){
     const list = document.querySelector('.project-list')
     list.innerHTML = '';
-
+    
     projects.map((project)=>{
         const li = document.createElement('li');
         li.innerText = project.name;
         console.log(project.name)
         li.addEventListener('click', ()=>{
             printTodos(project);
+            setCurrentProject(project);
         })
         list.appendChild(li);
     })
