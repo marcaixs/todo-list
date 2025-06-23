@@ -7,17 +7,19 @@ export function printProjects(projects){
         li.innerText = project.name;
         console.log(project.name)
         li.addEventListener('click', ()=>{
-
+            printTodos(project);
         })
         list.appendChild(li);
     })
 }
+
 
 export function createTodoCard(todo){
     const todoDiv = document.createElement('div');
     todoDiv.classList.add('todo-div');
 
     const deleteButton = document.createElement('button')
+    deleteButton.innerHTML = 'Delete'
     
     const title = document.createElement('p');
     const description = document.createElement('p');
@@ -40,6 +42,7 @@ export function createTodoCard(todo){
 
 export function printTodos(project){
     const todoContainer = document.querySelector('.todobox');
+    todoContainer.innerHTML = '';
 
     const todos = project.getTodos();
     todos.map((todo)=>{
