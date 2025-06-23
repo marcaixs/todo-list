@@ -12,4 +12,8 @@ export class Project {
     setTodos(todo){
         this.todos.push(todo);
     }
+
+    deleteTodo(todoId){
+        this.todos = this.todos.filter(todo => todo.id !== todoId);
+    }
 }
