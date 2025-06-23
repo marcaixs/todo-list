@@ -47,3 +47,24 @@ header{
     border: solid 1px black;
 }
 
+.todo-form{
+    display: none;
+    flex-direction: column;
+    position: fixed;
+    gap: 10px;
+    top: 25%;
+    right: 25%;
+    left: 25%;
+    background-color: aliceblue;
+    padding: 15px;
+    border: solid 1px black;
+}
+
+.form-buttons{
+    align-self: flex-end;
+}
+
+.create-todo, .close-form{
+    width: 60px;
+}
+
