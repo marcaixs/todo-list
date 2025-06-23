@@ -3,8 +3,13 @@ import {Project} from './modules/Project.js'
 import { Todo } from "./modules/todo.js";
 import { saveProjectToLocalStorage, getProjectFromLocalStorage } from "./modules/storage.js";
 import { printProjects, printTodos } from "./modules/ui.js";
+import { openForm, submitForm } from "./modules/form.js";
 
 const projects = [];
+let currentProject;
+function setCurrentProject(project) {
+    currentProject = project;
+}
 
 function startTodoList(){
     const exampleProject = new Project('example');
@@ -12,7 +17,8 @@ function startTodoList(){
     exampleProject.setTodos(new Todo('todo example 2', 'blebleblelbe', '25/05/25', 6))
     projects.push(exampleProject)
     saveProjectToLocalStorage(projects);
-    printProjects(projects);
+    printProjects(projects, setCurrentProject);
+    currentProject = exampleProject;
     printTodos(exampleProject)
 }
 
@@ -25,8 +31,14 @@ newProjectButton.addEventListener('click', ()=>{
     const project = new Project(name);
     projects.push(project);
     saveProjectToLocalStorage(projects);
-    printProjects(projects);
+    printProjects(projects, setCurrentProject);
     printTodos(project)
+})
+
+const newTodoButton = document.querySelector('.new-todo');
+
+newTodoButton.addEventListener('click', ()=>{
+    openForm(currentProject);
 })
 
 
