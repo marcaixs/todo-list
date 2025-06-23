@@ -15,12 +15,18 @@ export function printProjects(projects, setCurrentProject){
 }
 
 
-export function createTodoCard(todo){
+export function createTodoCard(todo, project){
     const todoDiv = document.createElement('div');
     todoDiv.classList.add('todo-div');
 
     const deleteButton = document.createElement('button')
     deleteButton.innerHTML = 'Delete'
+
+    deleteButton.addEventListener('click', ()=>{
+        project.deleteTodo(todo.id);
+        printTodos(project);    
+        //saveProjectToLocalStorage([project]); 
+    })
     
     const title = document.createElement('p');
     const description = document.createElement('p');
@@ -47,7 +53,7 @@ export function printTodos(project){
 
     const todos = project.getTodos();
     todos.map((todo)=>{
-        const todoDiv = createTodoCard(todo);
+        const todoDiv = createTodoCard(todo, project);
         todoContainer.appendChild(todoDiv);
     })
 }
