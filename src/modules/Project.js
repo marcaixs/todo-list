@@ -5,11 +5,11 @@ export class Project {
         this.todos = [];
     }
 
-    get getTodos() {
+    getTodos() {
         return this.todos;
     }
 
-    set setTodos(todo){
+    setTodos(todo){
         this.todos.push(todo);
     }
 }
