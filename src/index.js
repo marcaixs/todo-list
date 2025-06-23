@@ -1,16 +1,21 @@
 import "./styles.css";
 import {Project} from './modules/Project.js'
+import { Todo } from "./modules/todo.js";
 import { saveProjectToLocalStorage, getProjectFromLocalStorage } from "./modules/storage.js";
-import { printProjects } from "./modules/ui.js";
+import { printProjects, printTodos } from "./modules/ui.js";
 
 const projects = [];
 let currentProject; 
 
 function startTodoList(){
     const exampleProject = new Project('example');
+    exampleProject.setTodos(new Todo('todo example 1', 'blablablablabla', '24/05/25', 5))
+    exampleProject.setTodos(new Todo('todo example 2', 'blebleblelbe', '25/05/25', 6))
     projects.push(exampleProject)
     saveProjectToLocalStorage(projects);
+    currentProject = exampleProject;
     printProjects(projects);
+    printTodos(currentProject)
 }
 
 startTodoList()
@@ -22,7 +27,9 @@ newProjectButton.addEventListener('click', ()=>{
     const project = new Project(name);
     projects.push(project);
     saveProjectToLocalStorage(projects);
-    printProjects(projects); 
+    printProjects(projects);
+    currentProject = project;
+    printTodos(currentProject) 
 })
 
 
