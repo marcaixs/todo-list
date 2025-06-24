@@ -38,13 +38,17 @@ header{
 }
 
 .todo-div{
-    height: 150px;
-    width: 250px;
+    width: 300px;
+    height: fit-content;
     display: flex;
     flex-direction: column;
     gap: 5px;
     padding: 10px;
     border: solid 1px black;
+}
+
+.details{
+    display: none;
 }
 
 .todo-form{
