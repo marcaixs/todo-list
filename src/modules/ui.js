@@ -22,10 +22,26 @@ export function createTodoCard(todo, project){
     const deleteButton = document.createElement('button')
     deleteButton.innerHTML = 'Delete'
 
+    const detailsButton = document.createElement('button')
+    detailsButton.innerHTML = 'Details'
+
+    const details = document.createElement('div');
+    details.id = 'details'+todo.id;
+    details.style.display = "none";
+
     deleteButton.addEventListener('click', ()=>{
         project.deleteTodo(todo.id);
         printTodos(project);    
         //saveProjectToLocalStorage([project]); 
+    })
+
+    detailsButton.addEventListener('click', ()=>{
+        if(document.querySelector("#details"+todo.id).style.display == "none"){
+            document.querySelector("#details"+todo.id).style.display = "flex";
+        } else {
+            document.querySelector("#details"+todo.id).style.display = "none"
+        }
+        
     })
     
     const title = document.createElement('p');
@@ -39,10 +55,14 @@ export function createTodoCard(todo, project){
     priority.innerText = 'Priority: '+todo.priority;
 
     todoDiv.appendChild(title);
-    todoDiv.appendChild(description);
     todoDiv.appendChild(dueDate);
-    todoDiv.appendChild(priority);
-    todoDiv.appendChild(deleteButton);
+    todoDiv.appendChild(detailsButton);
+
+    details.appendChild(description);
+    details.appendChild(priority);
+    details.appendChild(deleteButton);
+
+    todoDiv.appendChild(details);
 
     return todoDiv;
 }
