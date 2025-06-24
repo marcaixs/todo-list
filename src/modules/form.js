@@ -31,7 +31,8 @@ export function createFormButtons(project){
     })
 
     const closeFormButton = document.querySelector('.close-form');
-    closeFormButton.addEventListener('click', ()=>{
+    closeFormButton.addEventListener('click', (event)=>{
+        event.preventDefault()
         closeForm();
     })
 }
