@@ -1,5 +1,3 @@
-
-
 export function saveProjectToLocalStorage(projects){
 
     localStorage.setItem('projects', JSON.stringify(projects))
@@ -8,7 +6,7 @@ export function saveProjectToLocalStorage(projects){
 export function getProjectFromLocalStorage(){
     const storedProjects = localStorage.getItem('projects')
 
-    if (storedUserData) {
+    if (storedProjects) {
     const projects = JSON.parse(storedProjects)
     return projects
     

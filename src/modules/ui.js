@@ -32,7 +32,7 @@ export function createTodoCard(todo, project){
     deleteButton.addEventListener('click', ()=>{
         project.deleteTodo(todo.id);
         printTodos(project);    
-        //saveProjectToLocalStorage([project]); 
+        saveProjectToLocalStorage([project]); 
     })
 
     detailsButton.addEventListener('click', ()=>{
